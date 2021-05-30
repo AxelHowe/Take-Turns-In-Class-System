@@ -1,0 +1,60 @@
+body#course  {
+  display: inline-block;
+}
+
+div.list-group{
+    display: inline-block;
+    width:13%;　//DIV區塊寬度
+    line-height:50px;　//DIV區塊高度
+    padding:20px;　//DIV區塊內距，參閱：CSS padding 內距。
+    border:2px blue solid;　//DIV區塊邊框，參閱：CSS border 邊框設計。
+    margin-right:10px;　//靠右外距，參閱：CSS margin 邊界使用介紹範例教學。
+    float:left;
+}
+div.table
+{
+    display: inline-block;
+    width:80%;
+    line-height:80px;
+    padding:20px;
+    border:2px green solid;
+
+}
+
+.btn {
+  font-family: Arial;
+  display: inline-block;
+  color: black;
+  font-size: 1.2em;
+  padding: 0.5em 3.2em;
+  text-decoration: none;
+  border: thin solid gray;
+  background: linear-gradient(#f7f7f7, #dedede);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+td, th {
+  border: 1px solid black;
+  height: 100px;
+  width: 10%;
+  line-height:30px;
+    font-size: 1em;
+    text-align: center;
+}
+
+
+img.edit,input.delete{
+  display: inline-block;
+  width: 1.6em;
+  vertical-align: bottom;
+
+
+}
+
+form.deleteCourse{
+    height: 0em;
+  display: inline-block;
+}

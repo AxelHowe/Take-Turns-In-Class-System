@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}<link rel="stylesheet" href="{% static 'group/css/group.css' %}">{% endblock %}
+{% block content %}
+
+{% include 'group/listgroup.html' %}
+<div class="table">
+<table class="table table-bordered border-primary">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">星期一</th>
+      <th scope="col">星期二</th>
+      <th scope="col">星期三</th>
+      <th scope="col">星期四</th>
+      <th scope="col">星期五</th>
+      <th scope="col">星期六</th>
+      <th scope="col">星期日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">第一節</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">第二節</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">第三節</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    <tr>
+      <th scope="row">第四節</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+{% endblock %}

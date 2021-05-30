@@ -1,0 +1,9 @@
+<div class="list-group">
+  <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+    The current link item
+  </a>
+  {% for nid in NIDs %}
+      <a href="{% url 'group:viewCourse' user.id nid.id %}" class="list-group-item list-group-item-action">{{ nid.NIDuser }}</a>
+  {% endfor %}
+  <a class="btn" href="{% url 'group:addNID' user.id %}">新增NID</a>
+</div>

@@ -1,0 +1,174 @@
+{% load static %}
+
+
+<div class="table" style="overflow-x:auto;">
+<table>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">週一</th>
+      <th scope="col">週二</th>
+      <th scope="col">週三</th>
+      <th scope="col">週四</th>
+      <th scope="col">週五</th>
+      <th scope="col">週六</th>
+      <th scope="col">週日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1<p class="time">08:10~09:00</p></th>
+      <td>
+        {{ course.1.1 }}<br>
+        <a href="{% url 'group:updateCourse' user.id nid.id course.1.1.id %}"><img class="edit" src="{% static 'group/img/edit.png' %}"></a>
+        <form class="deleteCourse" method="post" action="{% url 'group:deleteCourse' user.id nid.id course.1.1.id %}">
+          {% csrf_token %}
+          <input class="delete" type="image" src="{% static 'group/img/delete.png' %}" alt="Submit" >
+        </form>
+      </td>
+      <td>{{ course.1.2 }}
+        <a href="{% url 'group:updateCourse' user.id nid.id course.1.2.id %}"><img class="edit" src="{% static 'group/img/edit.png' %}"></a>
+        <form class="deleteCourse" method="post" action="{% url 'group:deleteCourse' user.id nid.id course.1.2.id %}">
+          {% csrf_token %}
+          <input class="delete" type="image" src="{% static 'group/img/delete.png' %}" alt="Submit" >
+        </form>
+      </td>
+      <td>{{ course.1.3 }}</td>
+      <td>{{ course.1.4 }}</td>
+      <td>{{ course.1.5 }}</td>
+      <td>{{ course.1.6 }}</td>
+      <td>{{ course.1.7 }}</td>
+    </tr>
+    <tr>
+      <th scope="row">2<p class="time">09:10~10:00</p></th>
+      <td>{{ course.2.1 }}</td>
+      <td>{{ course.2.2 }}</td>
+      <td>{{ course.2.3 }}</td>
+      <td>{{ course.2.4 }}</td>
+      <td>{{ course.2.5 }}</td>
+      <td>{{ course.2.6 }}</td>
+      <td>{{ course.2.7 }}</td>
+    </tr>
+    <tr>
+      <th scope="row">3<p class="time">10:10~11:00</p></th>
+      <td>{{ course.3.1 }}</td>
+      <td>{{ course.3.2 }}</td>
+      <td>{{ course.3.3 }}</td>
+      <td>{{ course.3.4 }}</td>
+      <td>{{ course.3.5 }}</td>
+      <td>{{ course.3.6 }}</td>
+      <td>{{ course.3.7 }}</td>
+    </tr>
+    <tr>
+      <th scope="row">4<p class="time">11:10~12:00</p></th>
+      <td>{{ course.4.1 }}</td>
+      <td>{{ course.4.2 }}</td>
+      <td>{{ course.4.3 }}</td>
+      <td>{{ course.4.4 }}</td>
+      <td>{{ course.4.5 }}</td>
+      <td>{{ course.4.6 }}</td>
+      <td>{{ course.4.7 }}</td>
+    </tr>
+    <tr>
+      <th scope="row">5<p class="time">12:10~13:00</p></th>
+      <td>{{ course.5.1 }}</td>
+      <td>{{ course.5.2 }}</td>
+      <td>{{ course.5.3 }}</td>
+      <td>{{ course.5.4 }}</td>
+      <td>{{ course.5.5 }}</td>
+      <td>{{ course.5.6 }}</td>
+      <td>{{ course.5.7 }}</td>
+    </tr>
+    <tr>
+      <th scope="row">6<p class="time">13:10~14:00</p></th>
+      <td>{{ course.6.1 }}</td>
+      <td>{{ course.6.2 }}</td>
+      <td>{{ course.6.3 }}</td>
+      <td>{{ course.6.4 }}</td>
+      <td>{{ course.6.5 }}</td>
+      <td>{{ course.6.6 }}</td>
+      <td>{{ course.6.7 }}</td>
+    </tr>
+    <tr>
+      <th scope="row">7<p class="time">14:10~15:00</p></th>
+      <td>{{ course.7.1 }}</td>
+      <td>{{ course.7.2 }}</td>
+      <td>{{ course.7.3 }}</td>
+      <td>{{ course.7.4 }}</td>
+      <td>{{ course.7.5 }}</td>
+      <td>{{ course.7.6 }}</td>
+      <td>{{ course.7.7 }}</td>
+    </tr>
+    <tr>
+      <th scope="row">8<p class="time">15:10~16:00</p></th>
+      <td>{{ course.8.1 }}</td>
+      <td>{{ course.8.2 }}</td>
+      <td>{{ course.8.3 }}</td>
+      <td>{{ course.8.4 }}</td>
+      <td>{{ course.8.5 }}</td>
+      <td>{{ course.8.6 }}</td>
+      <td>{{ course.8.7 }}</td>
+    </tr>
+    <tr>
+      <th scope="row">9<p class="time">16:10~17:00</p></th>
+      <td>{{ course.9.1 }}</td>
+      <td>{{ course.9.2 }}</td>
+      <td>{{ course.9.3 }}</td>
+      <td>{{ course.9.4 }}</td>
+      <td>{{ course.9.5 }}</td>
+      <td>{{ course.9.6 }}</td>
+      <td>{{ course.9.7 }}</td>
+    </tr>
+    <tr>
+      <th scope="row">10<p class="time">17:10~18:00</p></th>
+      <td>{{ course.10.1 }}</td>
+      <td>{{ course.10.2 }}</td>
+      <td>{{ course.10.3 }}</td>
+      <td>{{ course.10.4 }}</td>
+      <td>{{ course.10.5 }}</td>
+      <td>{{ course.10.6 }}</td>
+      <td>{{ course.10.7 }}</td>
+    </tr>
+    <tr>
+      <th scope="row">11<p class="time">18:30~19:20</p></th>
+      <td>{{ course.11.1 }}</td>
+      <td>{{ course.11.2 }}</td>
+      <td>{{ course.11.3 }}</td>
+      <td>{{ course.11.4 }}</td>
+      <td>{{ course.11.5 }}</td>
+      <td>{{ course.11.6 }}</td>
+      <td>{{ course.11.7 }}</td>
+    </tr>
+    <tr>
+      <th scope="row">12<p class="time">19:25~20:15</p></th>
+      <td>{{ course.12.1 }}</td>
+      <td>{{ course.12.2 }}</td>
+      <td>{{ course.12.3 }}</td>
+      <td>{{ course.12.4 }}</td>
+      <td>{{ course.12.5 }}</td>
+      <td>{{ course.12.6 }}</td>
+      <td>{{ course.12.7 }}</td>
+    </tr>
+    <tr>
+      <th scope="row">13<p class="time">20:25~21:15</p></th>
+      <td>{{ course.13.1 }}</td>
+      <td>{{ course.13.2 }}</td>
+      <td>{{ course.13.3 }}</td>
+      <td>{{ course.13.4 }}</td>
+      <td>{{ course.13.5 }}</td>
+      <td>{{ course.13.6 }}</td>
+      <td>{{ course.13.7 }}</td>
+    </tr>
+    <tr>
+      <th scope="row">14<p class="time">21:20~22:10</p></th>
+      <td>{{ course.14.1 }}</td>
+      <td>{{ course.14.2 }}</td>
+      <td>{{ course.14.3 }}</td>
+      <td>{{ course.14.4 }}</td>
+      <td>{{ course.14.5 }}</td>
+      <td>{{ course.14.6 }}</td>
+      <td>{{ course.14.7 }}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
