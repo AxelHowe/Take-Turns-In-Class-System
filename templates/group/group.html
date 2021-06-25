@@ -2,53 +2,236 @@
 {% load static %}
 {% block css %}<link rel="stylesheet" href="{% static 'group/css/group.css' %}">{% endblock %}
 {% block content %}
-
+<div class="header">
+  共同課表
+</div>
 {% include 'group/listgroup.html' %}
-<div class="table">
-<table class="table table-bordered border-primary">
+
+<div class="table" style="overflow-x:auto;">
+<table>
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">星期一</th>
-      <th scope="col">星期二</th>
-      <th scope="col">星期三</th>
-      <th scope="col">星期四</th>
-      <th scope="col">星期五</th>
-      <th scope="col">星期六</th>
-      <th scope="col">星期日</th>
+      <th scope="col">週一</th>
+      <th scope="col">週二</th>
+      <th scope="col">週三</th>
+      <th scope="col">週四</th>
+      <th scope="col">週五</th>
+      <th scope="col">週六</th>
+      <th scope="col">週日</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">第一節</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
+      <th scope="row">1<p class="time">08:10~09:00</p></th>
+        {% for i in course1 %}
+        <td>{{ i.CourseName }}
+            {% if i.CourseName != '' %}
+                <select>
+                    <option>請選擇要上課的人</option>
+                    {% for i in NIDs %}
+                    <option>{{ i }}</option>
+                    {% endfor %}
+                </select>
+            {% endif %}
+        </td>
+        {% endfor %}
     </tr>
     <tr>
-      <th scope="row">第二節</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
+      <th scope="row">2<p class="time">09:10~10:00</p></th>
+      {% for i in course2 %}
+        <td>{{ i.CourseName }}
+            {% if i.CourseName != '' %}
+                <select>
+                    <option>請選擇要上課的人</option>
+                    {% for i in NIDs %}
+                    <option>{{ i }}</option>
+                    {% endfor %}
+                </select>
+            {% endif %}
+        </td>
+        {% endfor %}
     </tr>
     <tr>
-      <th scope="row">第三節</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
+      <th scope="row">3<p class="time">10:10~11:00</p></th>
+      {% for i in course3 %}
+        <td>{{ i.CourseName }}
+            {% if i.CourseName != '' %}
+                <select>
+                    <option>請選擇要上課的人</option>
+                    {% for i in NIDs %}
+                    <option>{{ i }}</option>
+                    {% endfor %}
+                </select>
+            {% endif %}
+        </td>
+        {% endfor %}
     </tr>
     <tr>
-      <th scope="row">第四節</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td></td>
-      <td></td>
+      <th scope="row">4<p class="time">11:10~12:00</p></th>
+      {% for i in course4 %}
+        <td>{{ i.CourseName }}
+            {% if i.CourseName != '' %}
+                <select>
+                    <option>請選擇要上課的人</option>
+                    {% for i in NIDs %}
+                    <option>{{ i }}</option>
+                    {% endfor %}
+                </select>
+            {% endif %}
+        </td>
+        {% endfor %}
+    </tr>
+    <tr>
+      <th scope="row">5<p class="time">12:10~13:00</p></th>
+      {% for i in course5 %}
+        <td>{{ i.CourseName }}
+            {% if i.CourseName != '' %}
+                <select>
+                    <option>請選擇要上課的人</option>
+                    {% for i in NIDs %}
+                    <option>{{ i }}</option>
+                    {% endfor %}
+                </select>
+            {% endif %}
+        </td>
+        {% endfor %}
+    </tr>
+    <tr>
+      <th scope="row">6<p class="time">13:10~14:00</p></th>
+      {% for i in course6 %}
+        <td>{{ i.CourseName }}
+            {% if i.CourseName != '' %}
+                <select>
+                    <option>請選擇要上課的人</option>
+                    {% for i in NIDs %}
+                    <option>{{ i }}</option>
+                    {% endfor %}
+                </select>
+            {% endif %}
+        </td>
+        {% endfor %}
+    </tr>
+    <tr>
+      <th scope="row">7<p class="time">14:10~15:00</p></th>
+      {% for i in course7 %}
+        <td>{{ i.CourseName }}
+            {% if i.CourseName != '' %}
+                <select>
+                    <option>請選擇要上課的人</option>
+                    {% for i in NIDs %}
+                    <option>{{ i }}</option>
+                    {% endfor %}
+                </select>
+            {% endif %}
+        </td>
+        {% endfor %}
+    </tr>
+    <tr>
+      <th scope="row">8<p class="time">15:10~16:00</p></th>
+      {% for i in course8 %}
+        <td>{{ i.CourseName }}
+            {% if i.CourseName != '' %}
+                <select>
+                    <option>請選擇要上課的人</option>
+                    {% for i in NIDs %}
+                    <option>{{ i }}</option>
+                    {% endfor %}
+                </select>
+            {% endif %}
+        </td>
+        {% endfor %}
+    </tr>
+    <tr>
+      <th scope="row">9<p class="time">16:10~17:00</p></th>
+      {% for i in course9 %}
+        <td>{{ i.CourseName }}
+            {% if i.CourseName != '' %}
+                <select>
+                    <option>請選擇要上課的人</option>
+                    {% for i in NIDs %}
+                    <option>{{ i }}</option>
+                    {% endfor %}
+                </select>
+            {% endif %}
+        </td>
+        {% endfor %}
+    </tr>
+    <tr>
+      <th scope="row">10<p class="time">17:10~18:00</p></th>
+      {% for i in course10 %}
+        <td>{{ i.CourseName }}
+            {% if i.CourseName != '' %}
+                <select>
+                    <option>請選擇要上課的人</option>
+                    {% for i in NIDs %}
+                    <option>{{ i }}</option>
+                    {% endfor %}
+                </select>
+            {% endif %}
+        </td>
+        {% endfor %}
+    </tr>
+    <tr>
+      <th scope="row">11<p class="time">18:30~19:20</p></th>
+      {% for i in course11 %}
+        <td>{{ i.CourseName }}
+            {% if i.CourseName != '' %}
+                <select>
+                    <option>請選擇要上課的人</option>
+                    {% for i in NIDs %}
+                    <option>{{ i }}</option>
+                    {% endfor %}
+                </select>
+            {% endif %}
+        </td>
+        {% endfor %}
+    </tr>
+    <tr>
+      <th scope="row">12<p class="time">19:25~20:15</p></th>
+      {% for i in course12 %}
+        <td>{{ i.CourseName }}
+            {% if i.CourseName != '' %}
+                <select>
+                    <option>請選擇要上課的人</option>
+                    {% for i in NIDs %}
+                    <option>{{ i }}</option>
+                    {% endfor %}
+                </select>
+            {% endif %}
+        </td>
+        {% endfor %}
+    </tr>
+    <tr>
+      <th scope="row">13<p class="time">20:25~21:15</p></th>
+      {% for i in course13 %}
+        <td>{{ i.CourseName }}
+            {% if i.CourseName != '' %}
+                <select>
+                    <option>請選擇要上課的人</option>
+                    {% for i in NIDs %}
+                    <option>{{ i }}</option>
+                    {% endfor %}
+                </select>
+            {% endif %}
+        </td>
+        {% endfor %}
+    </tr>
+    <tr>
+      <th scope="row">14<p class="time">21:20~22:10</p></th>
+      {% for i in course14 %}
+        <td>{{ i.CourseName }}
+            {% if i.CourseName != '' %}
+                <select>
+                    <option>請選擇要上課的人</option>
+                    {% for i in NIDs %}
+                    <option>{{ i }}</option>
+                    {% endfor %}
+                </select>
+            {% endif %}
+        </td>
+        {% endfor %}
+
     </tr>
   </tbody>
 </table>

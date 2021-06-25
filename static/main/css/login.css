@@ -1,64 +1,19 @@
-﻿
-body {
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    margin: 0;
-    background: url("/static/main/img/fcu.jpg");
-    background-size: 45%;
-    background-position:center;
-    background-attachment: fixed;
+﻿.btn{
+    color:#333333;
+    background-color:white;
+    position:absolute;
+    left:40%
 }
-.上方橫條 {
-    width: 100%;
-    height: 100px;
-    margin: 0;
-    background-color: black;
-}
-.標頭 {
-    padding: 20px;
-    font-family: "Microsoft JhengHei", sans-serif;
-    color: white;
-    font-size: 50px;
-    text-align: left;
-}
-.login {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0,0,0,0.5);
-    border-radius: 10px;
-    padding: 30px;
-    text-align: center;
-    color: #fff;
-    font-family: "Microsoft JhengHei", sans-serif;
-    width: 25%;
-}
-.login i{
-    font-size: 100px;
-    margin: 20px auto;
-}
-input[type="text"], input[type="password"] {
-    font-size: 16px;
-    font-family: "Microsoft JhengHei", sans-serif;
-    padding: 5px;
-    border-radius: 4px;
-    margin: 0 auto;
-    display: block;
-    width: 100%;
-}
-button {
-    border: 0;
-    padding: 6px 12px;
-    margin: 20px auto;
-    font-size: 18px;
-    font-family: "Microsoft JhengHei", sans-serif;
-    color: #000;
-    background: #fff;
-}
-@media(max-width: 450px){
-    .login{
-        width: 70%;
-    }
+
+.content{
+    color:white;
+    position:absolute;
+    top:25%;
+    left:50%;
+    background-color:#333333;
+    background-color:rgba(0,0,0,0.6);
+    width:500px;
+    height:420px;
+    margin-left: -350px;
+    padding:110px;
 }

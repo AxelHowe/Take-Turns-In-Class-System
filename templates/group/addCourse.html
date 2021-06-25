@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 {% load static %}
-{% block css %}{% endblock %}
+{% block css %}<link rel="stylesheet" href="{% static 'group/css/group.css' %}">{% endblock %}
 {% block content %}
+<div class="content">
   <form method="post" action="{% url 'group:updateCourse' user.id nid.id Courseform.instance.id %}">
   {% csrf_token %}
   {{ Courseform.as_p }}
-  <input class="btn" type="submit" value="送出">
-    <a class="btn" href="{% url 'group:viewCourse' user.id nid.id %}">放棄</a>
+  <input class="button" type="submit" value="送出">
+    <a class="button" href="{% url 'group:viewCourse' user.id nid.id %}">放棄</a>
   </form>
+</div>
 {% endblock %}

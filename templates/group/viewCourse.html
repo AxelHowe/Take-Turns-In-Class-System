@@ -2,13 +2,15 @@
 {% load static %}
 {% block css %}<link rel="stylesheet" href="{% static 'group/css/group.css' %}">{% endblock %}
 {% block content %}
-<p>
+
+<div class="header">
   <form class="" method="post" action="{% url 'group:deleteNID' user.id nid.id %}">
     {% csrf_token %}
     {{ nid }} 的課表
-    <input class="btn inlineBlock" type="submit" value="刪除NID">
+    <input class="btn" type="submit" value="刪除NID">
   </form>
-</p>
+  <a href="{% url 'group:updateCourse' user.id nid.id course1.0.id %}"><img class="edit" src="{% static 'group/img/edit.png' %}"></a>
+</div>
 
 {% include 'group/listgroup.html' %}
 

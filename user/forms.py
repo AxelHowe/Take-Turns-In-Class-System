@@ -3,9 +3,9 @@ from user.models import User
 
 
 class UserForm(forms.ModelForm):
-    username = forms.CharField(label='帳號')
-    password = forms.CharField(label='密碼', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='確認密碼', widget=forms.PasswordInput)
+    username = forms.CharField(label='Username')
+    password = forms.CharField(label='Password', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput)
     #fullName = forms.CharField(label='姓名', max_length=128)
     #website = forms.URLField(label='個人網址', max_length=128)
     #address = forms.CharField(label='住址', max_length=128)

@@ -1,37 +1,101 @@
-from bs4 import BeautifulSoup
 import requests
-s = requests.Session()
-url='https://myfcu.fcu.edu.tw/main/infomyfculogin.aspx'
-page = s.get(url)
+from bs4 import BeautifulSoup
+import pandas as pd
+import pdfplumber
+import os
 
-NID = input("學號:")
-password = input("密碼:")
+class scrapers:
 
-data = BeautifulSoup(page.text, "html.parser")
-token = data.select('input[name="logintoken"]') #選擇input的標籤 且屬性name="logintoken"
-value = token[0]['value']    #抓logintoken的value
+    def pdf(NID, password):
+        #from bs4 import BeautifulSoup
+        #import requests
+        s = requests.Session()
+        loginUrl = 'https://ilearn2.fcu.edu.tw/login/index.php'
+        page = s.get(loginUrl)
+        data = BeautifulSoup(page.text, "html.parser")
+        inputHtml = data.select('input[name="logintoken"]')  # 選擇input的標籤 且屬性name="logintoken"
 
-data={'username':NID,'password':password,'logintoken':value} #這個是要post的帳號密碼
-page2 = s.post(url,data=data)
-data2 = BeautifulSoup(page2.text, "html.parser")
-course = data2.select("div.name")         #select課程名稱
-teacher = data2.select("div.teachers")    #select老師名稱
+        #NID = 'D0886096'
+        #password = 'Ss6326969'
+        token = inputHtml[0]['value']  # 抓logintoken的value
+        loginPayload = {'username': NID, 'password': password, 'rememberusername': 1, 'anchor': None,
+                        'logintoken': token}  # 這個是要post的帳號密碼
 
-for i,v in enumerate(course):             #印出
-    print(v.select("a")[0]['title'] + '  ' + teacher[i].select("span")[0].text)
+        loginResp = s.post(loginUrl, data=loginPayload)
+        s.get("https://ilearn2.fcu.edu.tw/apps/apps_sso.php?log_lang=tw")
+        s.get("https://myfcu.fcu.edu.tw/main/s3202/S3202_timetable_new.aspx")
 
-'''
-ScriptManager1: UpdatePanel1|OKButton
-__LASTFOCUS: 
-__EVENTTARGET: 
-__EVENTARGUMENT: 
-__VIEWSTATE: /wEPDwUJNTEwMzE5ODM5DxYCHgxJc01hc3RlclBhZ2VkFgQCAw8PFgIeBFRleHQFJDwhLS0gVGhpcyBQYWdlIGlzIG5vcm1hbCBkaXNwbGF5IC0tPmRkAgUPZBYCAgUPZBYCZg9kFg4CAQ8PFgIfAQUG55So5oi2ZGQCBQ8PFgIfAQUG5a+G56K8ZGQCCQ8PFgIfAQUJ6LOH5paZ5bqrZGQCCw8QZA8WAmYCARYCEAULTUlTREJTRVJWRVIFC01JU0RCU0VSVkVSZxAFDk1JU0RCU0VSVkVSQURPBQ5NSVNEQlNFUlZFUkFET2cWAWZkAg0PEA8WAh8BBQzoqJjkvY/lr4bnorxkZGRkAhkPDxYCHwEFBuaWueahiGRkAhsPEA8WCh4KRGF0YU1lbWJlcgUGVGFibGUxHg1EYXRhVGV4dEZpZWxkBQhpdGVtbmFtZR4ORGF0YVZhbHVlRmllbGQFCGl0ZW10eXBlHgtfIURhdGFCb3VuZGceDEF1dG9Qb3N0QmFja2hkEBUDB0ZjdUFwcHMJRmN1UHRBcHBzCEZjdUVBcHBzFQMHRmN1QXBwcwlGY3VQdEFwcHMIRmN1RUFwcHMUKwMDZ2dnFgFmZGTukIoLV1vQdJGW9cEdOhoVP8/j6w==
-__VIEWSTATEGENERATOR: 49CFD8FD
-__SCROLLPOSITIONX: 0
-__SCROLLPOSITIONY: 0
-__EVENTVALIDATION: /wEWBQLMwIu1BwKGnL+QDwKl1bKzCQK1qbSRCwKOoeEv1y7HUqvpYx14ZzqoMZ4PzMlVxgY=
-txtUserName: D0886096
-txtPassword: Ss6326969
-__ASYNCPOST: true
-OKButton: login
-'''
+        pdfFile = s.get("https://myfcu.fcu.edu.tw/main/s3202/timetable_print.aspx", params={"Y": 109, "S": 2})
+
+        with open('課表.pdf', 'wb') as fd:
+            fd.write(pdfFile.content)
+
+    def readCourse():
+        pdf = pdfplumber.open("課表.pdf")
+        returnList = []
+        p0 = pdf.pages[0]
+        text = p0.extract_text()  # 讀文字
+        count = 0
+        p0 = pdf.pages[0]
+
+
+        for table in p0.extract_tables():
+            week = 1
+            #print(table)
+            for line in table:
+                #print(line)
+                if (line[2] != '' and count % 2 != 0 and count < 29):
+                    #print(line[2].split('(')[0].replace('\n',''), week, line[0], '\n')
+                    Course = {'CourseName': line[2].split('(')[0].replace('\n', ''), 'week': int(week),
+                              'section': int(line[0])}
+                    returnList.append(Course)
+                count += 1
+        count = 0
+
+        for table in p0.extract_tables():
+            week = 2
+            for line in table:
+                # print(line)
+                if (line[3] != '' and count % 2 != 0 and count < 29):
+                    #print(line[3], week, line[0], '\n')
+                    Course = {'CourseName': line[3].split('(')[0].replace('\n', ''), 'week': int(week),
+                              'section': int(line[0])}
+                    returnList.append(Course)
+                count += 1
+        count = 0
+        for table in p0.extract_tables():
+            week = 3
+            for line in table:
+                # print(line)
+                if (line[4] != '' and count % 2 != 0 and count < 29):
+                    #print(line[4], week, line[0], '\n')
+                    Course = {'CourseName': line[4].split('(')[0].replace('\n', ''), 'week': int(week),
+                              'section': int(line[0])}
+                    returnList.append(Course)
+                count += 1
+        count = 0
+        for table in p0.extract_tables():
+            week = 4
+            for line in table:
+                # print(line)
+                if (line[5] != '' and count % 2 != 0 and count < 29):
+                    #print(line[5], week, line[0], '\n')
+                    Course = {'CourseName': line[5].split('(')[0].replace('\n', ''), 'week': int(week),
+                              'section': int(line[0])}
+                    returnList.append(Course)
+                count += 1
+        count = 0
+        for table in p0.extract_tables():
+            week = 5
+            for line in table:
+                #print(len(line))
+                if len(line) < 7 :
+                    continue
+                if (line[6] != '' and count % 2 != 0 and count < 29):
+                    #print(line[6], week, line[0], '\n')
+                    Course = {'CourseName': line[6].split('(')[0].replace('\n', ''), 'week': int(week),
+                              'section': int(line[0])}
+                    returnList.append(Course)
+                count += 1
+        pdf.close()
+        return returnList

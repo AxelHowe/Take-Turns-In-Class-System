@@ -19,6 +19,7 @@ def register(request):
     # POST
     userForm = UserForm(request.POST)
     if not userForm.is_valid():
+        messages.error(request, '請填資料')
         return render(request, template, {'userForm': userForm})
 
     userForm.save()
@@ -54,8 +55,8 @@ def login(request):
         return render(request, template)
 
     # POST
-    username = request.POST.get('username')
-    password = request.POST.get('password')
+    username = request.POST.get('Username')
+    password = request.POST.get('Password')
     if not username or not password:  # Server-side validation
         messages.error(request, '請填資料')
         return render(request, template)

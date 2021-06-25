@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>主頁</title>
+    <title>Home</title>
     <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'main/css/homepage.css' %}">
     <link rel="stylesheet" href="{% static 'main/css/menu.css' %}">
@@ -12,12 +12,13 @@
 <body>
 {% include 'main/menu.html' %}
 
-<div class="alert alert-primary" role="alert">
-  A simple primary alert—check it out!
+
   {% for message in messages %}
+    <div class="alert alert-primary" role="alert">
       <p class="{{ message.tags }}">{{ message }}</p>
+    </div>
     {% endfor %}
-</div>
+
 
 
 {% block content %} {% endblock %}

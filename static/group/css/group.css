@@ -11,50 +11,94 @@ div.list-group{
     margin-right:10px;　//靠右外距，參閱：CSS margin 邊界使用介紹範例教學。
     float:left;
 }
+
 div.table
 {
     display: inline-block;
     width:80%;
     line-height:80px;
     padding:20px;
-    border:2px green solid;
 
+    background-color: white;
 }
 
-.btn {
-  font-family: Arial;
-  display: inline-block;
-  color: black;
-  font-size: 1.2em;
-  padding: 0.5em 3.2em;
-  text-decoration: none;
-  border: thin solid gray;
-  background: linear-gradient(#f7f7f7, #dedede);
+.NID{
+    width:200px;
 }
-
+/* 失敗品
+.button {
+  position: relative;
+  left: 30%;
+  color: white;
+  font-size: 20px;
+ // padding: 5px 3.2px;
+ // border: solid 1px;
+ // border-radius:5px;
+  background-color: #336699;
+  text-decoration:none;
+}
+*/
+.button {
+background-color: #336699; /* Green */
+border: none;
+color: white;
+padding: 15px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+}
 table {
   width: 100%;
   border-collapse: collapse;
 }
+
 td, th {
   border: 1px solid black;
   height: 100px;
   width: 10%;
   line-height:30px;
-    font-size: 1em;
-    text-align: center;
+   font-size: 1em;
+   text-align: center;
 }
-
 
 img.edit,input.delete{
   display: inline-block;
   width: 1.6em;
   vertical-align: bottom;
-
-
 }
 
 form.deleteCourse{
     height: 0em;
   display: inline-block;
+}
+
+.btn{
+    background-color: #336699; color: white;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    position: absolute;
+    top: 25%;
+    left: 100%;
+    font-size: 16px;
+}
+
+.header{
+    position: relative;
+    margin:0px auto;
+    width:300px;
+    height:100px;
+    text-align:center;
+    line-height:100px;
+    font-weight:bold;
+    font-size:30px;
+}
+
+.edit{
+    position: absolute;
+    top: 25%;
+    left: -10%;
 }
